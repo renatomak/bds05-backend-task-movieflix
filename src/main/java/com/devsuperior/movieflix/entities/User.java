@@ -21,6 +21,9 @@ public class User implements UserDetails, Serializable {
     private String email;
     private String password;
 
+    @OneToMany(mappedBy = "user")
+    private List<Review> reviews = new ArrayList<>();
+
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "tb_user_role",
             joinColumns = @JoinColumn(name = "user_id"),
@@ -74,6 +77,9 @@ public class User implements UserDetails, Serializable {
         return roles;
     }
 
+    public List<Review> getReviews() {
+        return reviews;
+    }
 
     @Override
     public int hashCode() {
