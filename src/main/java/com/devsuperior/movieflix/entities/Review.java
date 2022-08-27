@@ -14,11 +14,13 @@ public class Review implements Serializable {
 
     private String text;
 
-    private String movie;
-
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "movie_id")
+    private Movie movie;
 
     public Review() {
     }
@@ -39,11 +41,11 @@ public class Review implements Serializable {
         this.text = text;
     }
 
-    public String getMovie() {
+    public Movie getMovie() {
         return movie;
     }
 
-    public void setMovie(String movie) {
+    public void setMovie(Movie movie) {
         this.movie = movie;
     }
 
