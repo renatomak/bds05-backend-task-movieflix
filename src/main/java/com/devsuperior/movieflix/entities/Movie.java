@@ -25,11 +25,15 @@ public class Movie  implements Serializable {
     @OneToMany(mappedBy = "movie")
     private List<Review> reviews = new ArrayList<>();
 
+    @ManyToOne
+    @JoinColumn(name = "genre_id")
+    private Genre genre;
+
     public Long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(final Long id) {
         this.id = id;
     }
 
@@ -37,7 +41,7 @@ public class Movie  implements Serializable {
         return title;
     }
 
-    public void setTitle(String title) {
+    public void setTitle(final String title) {
         this.title = title;
     }
 
@@ -45,7 +49,7 @@ public class Movie  implements Serializable {
         return subTitle;
     }
 
-    public void setSubTitle(String subTitle) {
+    public void setSubTitle(final String subTitle) {
         this.subTitle = subTitle;
     }
 
@@ -53,7 +57,7 @@ public class Movie  implements Serializable {
         return year;
     }
 
-    public void setYear(Integer year) {
+    public void setYear(final Integer year) {
         this.year = year;
     }
 
@@ -61,7 +65,7 @@ public class Movie  implements Serializable {
         return imgUrl;
     }
 
-    public void setImgUrl(String imgUrl) {
+    public void setImgUrl(final String imgUrl) {
         this.imgUrl = imgUrl;
     }
 
@@ -69,11 +73,23 @@ public class Movie  implements Serializable {
         return synopsis;
     }
 
-    public void setSynopsis(String synopsis) {
+    public void setSynopsis(final String synopsis) {
         this.synopsis = synopsis;
     }
 
     public List<Review> getReviews() {
         return reviews;
+    }
+
+    public void setReviews(final List<Review> reviews) {
+        this.reviews = reviews;
+    }
+
+    public Genre getGenre() {
+        return genre;
+    }
+
+    public void setGenre(final Genre genre) {
+        this.genre = genre;
     }
 }
